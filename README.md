@@ -2,7 +2,7 @@
 
 kURLy - a microservice for URL shortening.
 
-[![Build Status](https://travis-ci.com/naXa777/spring-cloud-example.svg?branch=master&style=flat)](https://travis-ci.com/naXa777/spring-cloud-example)
+[![Build Status](https://travis-ci.com/naXa777/spring-cloud-url-shortener.svg?branch=master&style=flat)](https://travis-ci.com/naXa777/spring-cloud-url-shortener)
 
 ## Description
 
@@ -115,9 +115,9 @@ Config example:
 
 ### Centralized configuration
 
-| Module             | URL                        |
-| :----------------: | :------------------------: |
-| config-server      | `http://host:port/hystrix` |
+| Module             | URL                                                    |
+| :----------------: | :----------------------------------------------------: |
+| config-server      | `http://host:8888/service-name/application.properties` |
 
 It fetches configuration from a remote Git repository: https://github.com/naXa777/spring-cloud-url-shortener-config
 
@@ -139,6 +139,7 @@ You have a freedom of choosing build tools for this project: [Gradle](https://gr
 ### Using Gradle Wrapper
 
     ./gradlew :discovery-server:bootRun
+    ./gradlew :config-server:bootRun
     ./gradlew :kurly-service:bootRun
     ./gradlew :kurly-app:bootRun
     ./gradlew :turbine:bootRun
@@ -150,10 +151,11 @@ You have a freedom of choosing build tools for this project: [Gradle](https://gr
 2. Sync project files with Gradle (initial sync may happen automatically)
 3. Now you should have multiple run configurations for every module. Run them one-by-one:
     1. DiscoveryServerApplication
-    2. KurlyServiceApplication
-    3. KurlyAppApplication
-    4. TurbineApplication
-    5. HystrixDashboardApplication
+    2. ConfigServerApplication
+    3. KurlyServiceApplication
+    4. KurlyAppApplication
+    5. TurbineApplication
+    6. HystrixDashboardApplication
 
 Tip: make sure that you run them on different ports and these ports are free, otherwise you'll get an error.
 
@@ -163,7 +165,7 @@ Tip: make sure that you run them on different ports and these ports are free, ot
 
 ## Continuous Integration
 
-| [Travis CI](https://travis-ci.com/) | [![Build Status](https://travis-ci.com/naXa777/spring-cloud-example.svg?branch=master&style=flat)](https://travis-ci.com/naXa777/spring-cloud-example) |
+| [Travis CI](https://travis-ci.com/) | [![Build Status](https://travis-ci.com/naXa777/spring-cloud-url-shortener.svg?branch=master&style=flat)](https://travis-ci.com/naXa777/spring-cloud-url-shortener) |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 
 ## License
