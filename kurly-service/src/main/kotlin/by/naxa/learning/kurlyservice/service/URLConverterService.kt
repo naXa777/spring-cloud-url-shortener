@@ -1,25 +1,27 @@
 package by.naxa.learning.kurlyservice.service
 
+import by.naxa.learning.kurlyservice.config.KurlyConfiguration
 import by.naxa.learning.kurlyservice.exception.NotFoundException
 import by.naxa.learning.kurlyservice.model.Link
 import by.naxa.learning.kurlyservice.repository.LinkRepository
 import by.naxa.learning.kurlyservice.util.CustomBase64
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Value
+import org.springframework.cloud.context.config.annotation.RefreshScope
 import org.springframework.stereotype.Service
 import org.springframework.web.util.UriComponentsBuilder
 import javax.transaction.Transactional
 
 @Service
+@RefreshScope
 @Transactional
 class URLConverterService(
         @Autowired val repository: LinkRepository,
-        @Value("\${baseUrl}") val baseUrl: String
+        @Autowired val config: KurlyConfiguration
 ) {
 
     fun shortenURL(longUrl: String): String {
-        LOGGER.info("Shortening {}", longUrl)
+        LOGGER.info("Shortening $longUrl")
 
         var link = Link(longUrl)
 
@@ -29,7 +31,8 @@ class URLConverterService(
         link.shortCode = base64id
         repository.save(link)
 
-        val uriComponents = UriComponentsBuilder.fromHttpUrl(baseUrl)
+        val fallbackBaseUrl = "http://localhost:9000/"
+        val uriComponents = UriComponentsBuilder.fromHttpUrl(config.baseUrl ?: fallbackBaseUrl)
                 .path(base64id)
                 .build()
 

@@ -113,6 +113,16 @@ Config example:
     turbine.app-config=kurly-app
     turbine.cluster-name-expression='default'
 
+### Centralized configuration
+
+| Module             | URL                        |
+| :----------------: | :------------------------: |
+| config-server      | `http://host:port/hystrix` |
+
+It fetches configuration from a remote Git repository: https://github.com/naXa777/spring-cloud-url-shortener-config
+
+After pushing new config to the repository, call `http post http://service-host:port/actuator/refresh` to trigger properties refresh.
+
 ## Building and Running Locally
 
 ### Prepare
