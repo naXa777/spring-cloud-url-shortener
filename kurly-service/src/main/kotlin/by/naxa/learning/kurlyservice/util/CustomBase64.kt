@@ -15,6 +15,7 @@
  */
 package by.naxa.learning.kurlyservice.util
 
+import net.jcip.annotations.NotThreadSafe
 import java.util.*
 
 /**
@@ -29,21 +30,24 @@ import java.util.*
  * @author Tobias Brandt
  * @author Pavel Homal
  */
+@NotThreadSafe
 object CustomBase64 {
 
     private const val DEFAULT_CHARSET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_-"
     private const val LENGTH_LIMIT = 26
 
-    private var base = DEFAULT_CHARSET.length   // 64
-    private var base64Charset: String = DEFAULT_CHARSET
+    var base = DEFAULT_CHARSET.length   // 64
+        private set
+    var base64Charset: String = DEFAULT_CHARSET
+        private set
     // int to char mapping
     // 0->0, 1->1, ..., 9->9, 10->a, 11->b, ..., 35->z, 36->A, ..., 61->Z, 62->_, 63->-
     private var base64Chars: CharArray = base64Charset.toCharArray()
     // reverse mapping
-    private val charPositionMap: HashMap<Char, Int> = HashMap()
+    private var charPositionMap: HashMap<Char, Int> = HashMap()
 
     init {
-        setBase64Charset(DEFAULT_CHARSET)
+        setCharset(DEFAULT_CHARSET)
     }
 
     fun encode(base10number: Long): String {
@@ -87,15 +91,19 @@ object CustomBase64 {
      * If it does contain duplicate characters a [IllegalArgumentException] is thrown.
      * @param base64Charset
      */
-    fun setBase64Charset(base64Charset: String) {
-        this.base64Charset = base64Charset
-        this.base64Chars = base64Charset.toCharArray()
-        this.base = base64Charset.length
-        this.charPositionMap.clear()
+    fun setCharset(base64Charset: String) {
+        val base64Chars = base64Charset.toCharArray()
+        val base = base64Charset.length
+        val charPositionMap: HashMap<Char, Int> = HashMap()
         for (i in base64Chars.indices)
-            this.charPositionMap[base64Chars[i]] = i
-        if (this.charPositionMap.size != base)
+            charPositionMap[base64Chars[i]] = i
+        if (charPositionMap.size != base)
             throw IllegalArgumentException("The charset must contain $base unique characters.")
+
+        this.base64Charset = base64Charset
+        this.base64Chars = base64Chars
+        this.base = base
+        this.charPositionMap = charPositionMap
     }
 
 }
