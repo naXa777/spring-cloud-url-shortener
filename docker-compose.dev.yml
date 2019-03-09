@@ -1,0 +1,73 @@
+version: '2.1'
+services:
+  db:
+    container_name: kurly-db
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - ./init.sql:/mysql/init.sql
+    environment:
+      MYSQL_DATABASE: kurly
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+
+  discovery-server:
+    container_name: discovery-server
+    build: discovery-server
+    ports:
+      - 8761:8761
+    expose:
+      - 8761
+
+  config-server:
+    container_name: config-server
+    build: config-server
+    depends_on:
+      discovery-server:
+        condition: service_healthy
+    expose:
+      - 8888
+
+  kurly-service:
+    container_name: kurly-backend
+    build: kurly-service
+    ports:
+      - 9000:9000
+    environment:
+      PROFILE: mysql
+    depends_on:
+      db:
+        condition: service_started
+      discovery-server:
+        condition: service_healthy
+      config-server:
+        condition: service_healthy
+
+  kurly-app:
+    container_name: kurly-frontend
+    build: kurly-app
+    ports:
+      - 8000:8000
+    depends_on:
+      discovery-server:
+        condition: service_healthy
+
+  hystrix-dashboard:
+    container_name: hystrix-dashboard
+    build: hystrix-dashboard
+
+  turbine:
+    container_name: turbine
+    build: turbine
+    depends_on:
+      discovery-server:
+        condition: service_healthy
+    ports:
+      - 3000:3000
+
+networks:
+    default:

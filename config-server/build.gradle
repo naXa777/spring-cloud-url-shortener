@@ -1,3 +1,4 @@
+description='Configuration Server (remote git repo)'
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'

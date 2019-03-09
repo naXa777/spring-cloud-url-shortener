@@ -1,3 +1,4 @@
+description='A service registry (Eureka Server)'
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-actuator')

@@ -1,3 +1,4 @@
+description "Back-end for kURLy (URL shortener service)"
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-actuator')
