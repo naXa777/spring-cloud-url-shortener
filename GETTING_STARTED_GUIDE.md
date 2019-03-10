@@ -18,6 +18,8 @@ More info in [Implementation](#implementation) section.
 
 ## Getting Started
 
+This section describes various ways of deploying the application in development environment (localhost).
+
 ### Prepare
 
 Before the first build you need to take additional steps.
@@ -37,7 +39,7 @@ It's distributed with a Gradle Wrapper so you don't need to download and install
 
 ### Run Using Docker
 
-The most simple way to run this application locally is to build artifacts with Gradle and then run `docker-compose -f docker-compose.dev.yml up`.
+The fastest way to run this application locally is to build artifacts with Gradle and then run `docker-compose -f docker-compose.dev.yml up`.
 
 [docker-compose.dev.yml](docker-compose.dev.yml) is configured to build images locally and expose containers ports for convenient development.
 
@@ -45,7 +47,13 @@ The most simple way to run this application locally is to build artifacts with G
 
 Define environment variable `SPRING_PROFILES_ACTIVE=local`.
 
-Run microservices one by one.
+You can run the developed microservice in a standalone mode:
+
+```bash
+./gradlew :kurly-service:bootRun
+```
+
+Or run microservices one by one (to get infrastructure up & running).
 
 1. Required:
 

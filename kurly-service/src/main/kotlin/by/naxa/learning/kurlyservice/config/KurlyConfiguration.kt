@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component
 @ConfigurationProperties(prefix = "kurly")
 data class KurlyConfiguration(
         var property: String? = null,
+        var swaggerEnable: Boolean = true,
         var baseUrl: String? = null,
         var allowedProtocols: String = "http,https"
 )
