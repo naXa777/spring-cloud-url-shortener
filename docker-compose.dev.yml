@@ -59,6 +59,8 @@ services:
   hystrix-dashboard:
     container_name: hystrix-dashboard
     build: hystrix-dashboard
+    ports:
+      - 8080:8080
 
   turbine:
     container_name: turbine
@@ -66,8 +68,8 @@ services:
     depends_on:
       discovery-server:
         condition: service_healthy
-    ports:
-      - 3000:3000
+    expose:
+      - 3000
 
 networks:
     default:
