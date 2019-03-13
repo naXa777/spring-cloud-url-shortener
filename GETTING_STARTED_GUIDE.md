@@ -130,7 +130,7 @@ Additionally, there're primitive `contextLoads` tests in other modules.
 
 ### Manual testing
 
-[HTTPie](https://httpie.org/) commands:
+[HTTPie](https://httpie.org/) commands (assuming `kurly-service` is running on `localhost:9000`):
 ```bash
 http post localhost:9000/shorten url="https://placekitten.com/200/287"
 http get localhost:9000/1

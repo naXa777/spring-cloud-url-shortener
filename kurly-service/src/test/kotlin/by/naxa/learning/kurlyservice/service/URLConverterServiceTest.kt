@@ -18,7 +18,6 @@ import org.mockito.Captor
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
-import java.util.*
 
 
 /**
@@ -148,7 +147,7 @@ class URLConverterServiceTest {
         val link = Link(expectedLongUrl, shortCode)
         link.id = id
 
-        whenever(repository.findByShortCode(shortCode)).thenReturn(Optional.of(link))
+        whenever(repository.findByShortCode(shortCode)).thenReturn(link)
 
         // Act
         val result = service.getLongURLFromID(shortCode)
@@ -163,7 +162,7 @@ class URLConverterServiceTest {
         // Arrange
         val shortCode = "y"
 
-        whenever(repository.findByShortCode(shortCode)).thenReturn(Optional.empty())
+        whenever(repository.findByShortCode(shortCode)).thenReturn(null)
 
         // Act
         service.getLongURLFromID(shortCode)

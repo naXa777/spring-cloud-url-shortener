@@ -41,7 +41,7 @@ class URLConverterService(
 
     @Throws(Exception::class)
     fun getLongURLFromID(uniqueID: String): String {
-        val link = repository.findByShortCode(uniqueID).orElseThrow { NotFoundException() }
+        val link = repository.findByShortCode(uniqueID) ?: throw NotFoundException()
         LOGGER.info("Converting shortened URL back to ${link.originalUrl}")
         return link.originalUrl
     }
