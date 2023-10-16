@@ -7,7 +7,7 @@ import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
-import javax.transaction.Transactional
+import jakarta.transaction.Transactional
 
 /**
  * Test [KurlyController] and the underlying services

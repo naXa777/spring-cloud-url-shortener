@@ -3,7 +3,7 @@ package by.naxa.learning.kurlyservice.web.dto
 import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 import org.hibernate.validator.constraints.URL
-import javax.validation.constraints.NotNull
+import jakarta.validation.constraints.NotNull
 
 @ApiModel
 data class ShortenRequest(
