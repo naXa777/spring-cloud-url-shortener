@@ -2,6 +2,6 @@ description "Turbine Stream"
 
 dependencies {
 	implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
-	implementation('org.springframework.cloud:spring-cloud-starter-netflix-turbine')
+	implementation('org.springframework.cloud:spring-cloud-starter-netflix-turbine:2.2.10.RELEASE')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }

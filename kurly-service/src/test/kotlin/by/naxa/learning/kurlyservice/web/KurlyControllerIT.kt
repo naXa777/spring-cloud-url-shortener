@@ -2,7 +2,7 @@ package by.naxa.learning.kurlyservice.web
 
 import by.naxa.learning.kurlyservice.SpringBootMvcTest
 import by.naxa.learning.kurlyservice.web.dto.ShortenRequest
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content

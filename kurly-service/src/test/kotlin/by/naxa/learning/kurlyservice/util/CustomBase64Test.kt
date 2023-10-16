@@ -1,14 +1,15 @@
 package by.naxa.learning.kurlyservice.util
 
 import org.assertj.core.api.SoftAssertions
-import org.junit.After
-import org.junit.Test
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class CustomBase64Test {
 
     var softly = SoftAssertions()
 
-    @After
+    @AfterEach
     fun assertAll() {
         softly.assertAll()
     }
@@ -22,10 +23,12 @@ class CustomBase64Test {
         softly.assertThat(base64String).isEqualTo("1trvs")
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun shouldNotEncodeWhenNumberIsNegative() {
-        // Act
-        CustomBase64.encode(base10number = -1)
+        assertThrows<IllegalArgumentException> {
+            // Act
+            CustomBase64.encode(base10number = -1)
+        }
     }
 
     @Test
