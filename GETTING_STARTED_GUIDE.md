@@ -43,6 +43,10 @@ The fastest way to run this application locally is to build artifacts with Gradl
 
 [docker-compose.dev.yml](docker-compose.dev.yml) is configured to build images locally and expose containers ports for convenient development.
 
+#### Demo
+
+![screenshot](docs/docker-compose-demo.png)
+
 ### Run Using Gradle
 
 Define environment variable `SPRING_PROFILES_ACTIVE=local`.
@@ -105,10 +109,10 @@ Connection string:
 
 * http://localhost:9000 - Kurly Service (back-end)
 * http://localhost:8761 - Eureka Dashboard
-* http://localhost:8080/hystrix - Hystrix Dashboard
 
 Less important endpoints:
 
+* http://localhost:8080/hystrix - Hystrix Dashboard
 * http://localhost:3000/turbine.stream - Turbine Stream (not exposed in Docker)
 * http://localhost:8888 - Configuration Service (not exposed in Docker)
 * http://localhost:8000 - Kurly Application (front-end, not ready yet)
@@ -118,6 +122,10 @@ Less important endpoints:
 * `POST /shorten`
     body: `{"url": "https://long.url/"}`
 * `GET /:shortCode`
+
+API documentation is available at http://localhost:9000/swagger-ui/index.html
+
+![screenshot](docs/openapi-demo.jpg)
 
 ## Tests
 
@@ -153,6 +161,11 @@ This project demonstrates such features of microservices architecture as:
 * Circuit Breaker (Hystrix)
 * Monitoring (Turbine + Hystrix Dashboard)
 
+> :skull: <b>Deprecation Notice</b>
+> 
+> Turbine and Hystrix are currently in maintenance mode. 
+> The related microservices are not working after update to Spring Boot 3 and Spring Cloud 2022.0.
+
 The implemented URL shortening service assigns a unique key to every long URL passed to `/shorten` endpoint.
 For the sake of simplicity, entity ID is used as a unique key.
 For better scalability, a numeric ID (base 10) is converted to alphanumeric representation (base 64) using base conversions.
@@ -182,6 +195,7 @@ so the corresponding column type in DB is `MEDIUMTEXT` in order to fit any URL.
 * Travis CI
 * Git
 * Database: H2 or MySQL
+* OpenAPI 3
 
 ...
 
@@ -190,10 +204,11 @@ so the corresponding column type in DB is `MEDIUMTEXT` in order to fit any URL.
 The project is not finished yet. Future work:
 
 * `kurly-app` module which should be a gateway to `kurly-service`.
-* Swagger UI documentation
+* Open UI documentation
 * Design and front-end
 * HTTPS
 * Public deployment
 * Load testing
 * Improvement: filter allowed protocols
 * Improvement: collect analytics
+* Migrate from Hystrix-Turbine to some other tool compatible with a modern Spring Cloud

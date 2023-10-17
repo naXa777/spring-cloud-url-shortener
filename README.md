@@ -50,6 +50,8 @@ A web based Eureka dashboard is enabled by default. It shows useful information 
  
 In local environment it's available at http://localhost:8761
 
+![screenshot](docs/eureka-demo.jpg)
+
 ### Kurly Service
 
 | Module          | URL                        |
@@ -86,7 +88,7 @@ How to embrace failure?
 
 #### Hystrix
 
-:wastebasket: Deprecated
+:skull: Deprecated in 2023
 
 [Netflix Hystrix](https://github.com/Netflix/Hystrix) is a latency and **fault tolerance** library designed to isolate points of access to remote systems, services and 3rd party libraries, **stop cascading failure** and enable resilience in complex distributed systems where failure is inevitable.
 
@@ -94,7 +96,7 @@ See [How it works](https://github.com/Netflix/Hystrix/wiki/How-it-Works).
 
 #### Hystrix Dashboard
 
-:wastebasket: Deprecated
+:skull: Deprecated in 2023
 
 | Module             | URL                        |
 | :----------------: | :------------------------: |
@@ -104,7 +106,7 @@ Documentation: [Circuit Breaker: Hystrix Dashboard](https://cloud.spring.io/spri
 
 #### Turbine
 
-:wastebasket: Deprecated
+:skull: Deprecated in 2023
 
 | Module   | URL                               |
 | :------: | :-------------------------------: |
