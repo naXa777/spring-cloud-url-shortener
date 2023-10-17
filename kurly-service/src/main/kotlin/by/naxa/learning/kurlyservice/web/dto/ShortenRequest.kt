@@ -1,12 +1,11 @@
 package by.naxa.learning.kurlyservice.web.dto
 
-import io.swagger.annotations.ApiModel
-import io.swagger.annotations.ApiModelProperty
+import io.swagger.v3.oas.annotations.media.Schema
 import org.hibernate.validator.constraints.URL
 import jakarta.validation.constraints.NotNull
 
-@ApiModel
+@Schema
 data class ShortenRequest(
-        @ApiModelProperty(required = true)
+        @Schema(required = true)
         @field:NotNull @field:URL var url: String?
 )

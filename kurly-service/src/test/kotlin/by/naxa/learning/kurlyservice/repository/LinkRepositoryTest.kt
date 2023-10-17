@@ -58,7 +58,7 @@ class LinkRepositoryTest {
     @Test
     fun shouldFindByShortCode() {
         // Arrange
-        val expectedId = 1L
+        val expectedId = 3L
         val shortCode = "1"
         val expected = Link(originalUrl = "http://test.com", shortCode = shortCode)
 

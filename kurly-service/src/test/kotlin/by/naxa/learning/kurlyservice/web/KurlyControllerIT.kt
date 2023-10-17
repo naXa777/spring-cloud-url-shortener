@@ -26,7 +26,7 @@ class KurlyControllerIT : SpringBootMvcTest() {
 
         performPostRequest(body)
                 .andExpect(status().isCreated)
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
     }
 
     @Test

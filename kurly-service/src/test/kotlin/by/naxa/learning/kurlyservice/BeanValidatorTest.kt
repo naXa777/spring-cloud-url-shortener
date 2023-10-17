@@ -3,12 +3,12 @@ package by.naxa.learning.kurlyservice
 
 import by.naxa.learning.kurlyservice.web.dto.ShortenRequest
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean
 import java.util.*
 import jakarta.validation.Validator
+import org.junit.jupiter.api.BeforeEach
 
 /**
  * Simple test to make sure that Bean Validation is working
@@ -16,9 +16,9 @@ import jakarta.validation.Validator
  */
 class BeanValidatorTest {
 
-    private var validator: Validator = LocalValidatorFactoryBean()
+    private val validator: Validator = LocalValidatorFactoryBean()
 
-    @BeforeAll
+    @BeforeEach
     fun initValidator() {
         (validator as LocalValidatorFactoryBean).afterPropertiesSet()
         LocaleContextHolder.setLocale(Locale.ENGLISH)

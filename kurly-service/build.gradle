@@ -8,14 +8,15 @@ dependencies {
 	implementation('com.fasterxml.jackson.module:jackson-module-kotlin')
 	implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 	implementation('org.springframework.cloud:spring-cloud-starter-config')
+	implementation('org.springframework.cloud:spring-cloud-starter-bootstrap')
 	annotationProcessor('org.springframework.boot:spring-boot-configuration-processor')
 	runtimeOnly('org.springframework.boot:spring-boot-devtools')
 	implementation('net.jcip:jcip-annotations:1.0')
-	implementation('io.springfox:springfox-swagger2:2.9.2')
+	implementation('org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0')
 
-    runtimeOnly('com.h2database:h2')
-	runtimeOnly("com.mysql:mysql-connector-j:8.1.0")
+	runtimeOnly('com.h2database:h2')
+	runtimeOnly('com.mysql:mysql-connector-j:8.1.0')
 
-	testImplementation('com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0')
+	testImplementation('org.mockito.kotlin:mockito-kotlin:5.1.0')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
