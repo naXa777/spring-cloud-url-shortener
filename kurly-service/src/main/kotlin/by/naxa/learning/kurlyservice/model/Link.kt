@@ -2,9 +2,9 @@ package by.naxa.learning.kurlyservice.model
 
 import org.hibernate.validator.constraints.URL
 import java.time.LocalDateTime
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Lob
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.Lob
 
 const val MAX_URL_LENGTH = 200 * 1024   // 200 KB
 

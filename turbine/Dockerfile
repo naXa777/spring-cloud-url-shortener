@@ -1,4 +1,4 @@
-FROM java:8-jre
+FROM openjdk:19-jdk-alpine
 MAINTAINER Pavel Homal <about.me/naxa>
 
 ADD ./build/libs/turbine.jar /app/

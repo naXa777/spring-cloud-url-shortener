@@ -11,7 +11,7 @@ services:
       - ./init.sql:/mysql/init.sql
     environment:
       MYSQL_DATABASE: kurly
-      MYSQL_USER: root
+      MYSQL_USER: testuser
       MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: secret
 
@@ -56,20 +56,20 @@ services:
       discovery-server:
         condition: service_healthy
 
-  hystrix-dashboard:
-    container_name: hystrix-dashboard
-    build: hystrix-dashboard
-    ports:
-      - 8080:8080
-
-  turbine:
-    container_name: turbine
-    build: turbine
-    depends_on:
-      discovery-server:
-        condition: service_healthy
-    expose:
-      - 3000
+#  hystrix-dashboard:
+#    container_name: hystrix-dashboard
+#    build: hystrix-dashboard
+#    ports:
+#      - 8080:8080
+#
+#  turbine:
+#    container_name: turbine
+#    build: turbine
+#    depends_on:
+#      discovery-server:
+#        condition: service_healthy
+#    expose:
+#      - 3000
 
 networks:
     default:

@@ -4,28 +4,29 @@ import by.naxa.learning.kurlyservice.config.KurlyConfiguration
 import by.naxa.learning.kurlyservice.exception.NotFoundException
 import by.naxa.learning.kurlyservice.model.Link
 import by.naxa.learning.kurlyservice.repository.LinkRepository
-import com.nhaarman.mockitokotlin2.atLeast
-import com.nhaarman.mockitokotlin2.doAnswer
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.whenever
 import org.assertj.core.api.SoftAssertions
-import org.junit.After
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.ArgumentCaptor
 import org.mockito.ArgumentMatchers.any
 import org.mockito.Captor
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.kotlin.atLeast
+import org.mockito.kotlin.doAnswer
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.whenever
+import java.util.function.Consumer
 
 
 /**
  *
- * this class is using mockito-kotlin for unit testing. known issues:
- * 0. https://github.com/nhaarman/mockito-kotlin/issues/302
+ * this class is using mockito-kotlin for unit testing.
  */
-@RunWith(MockitoJUnitRunner::class)
+@ExtendWith(MockitoExtension::class)
 class URLConverterServiceTest {
 
     @InjectMocks
@@ -42,7 +43,7 @@ class URLConverterServiceTest {
 
     var softly = SoftAssertions()
 
-    @After
+    @AfterEach
     fun assertAll() {
         softly.assertAll()
     }
@@ -70,11 +71,11 @@ class URLConverterServiceTest {
         // Assert
         verify(repository, atLeast(1)).save(linkCaptor.capture())
         softly.assertThat(result).isEqualTo(expectedUrl)
-        softly.assertThat(linkCaptor.value).satisfies {link ->
+        softly.assertThat(linkCaptor.value).satisfies(Consumer { link ->
             softly.assertThat(link.originalUrl).isEqualTo(longUrl)
             softly.assertThat(link.shortCode).isEqualTo(shortCode)
             softly.assertThat(link.creationDate).isNotNull
-        }
+        })
     }
 
     @Test
@@ -100,11 +101,11 @@ class URLConverterServiceTest {
         // Assert
         verify(repository, atLeast(1)).save(linkCaptor.capture())
         softly.assertThat(result).isEqualTo(expectedUrl)
-        softly.assertThat(linkCaptor.value).satisfies {link ->
+        softly.assertThat(linkCaptor.value).satisfies(Consumer {link ->
             softly.assertThat(link.originalUrl).isEqualTo(longUrl)
             softly.assertThat(link.shortCode).isEqualTo(shortCode)
             softly.assertThat(link.creationDate).isNotNull
-        }
+        })
     }
 
     @Test
@@ -130,11 +131,11 @@ class URLConverterServiceTest {
         // Assert
         verify(repository, atLeast(1)).save(linkCaptor.capture())
         softly.assertThat(result).isEqualTo(expectedUrl)
-        softly.assertThat(linkCaptor.value).satisfies {link ->
+        softly.assertThat(linkCaptor.value).satisfies(Consumer { link ->
             softly.assertThat(link.originalUrl).isEqualTo(longUrl)
             softly.assertThat(link.shortCode).isEqualTo(shortCode)
             softly.assertThat(link.creationDate).isNotNull
-        }
+        })
     }
 
     @Test
@@ -156,7 +157,7 @@ class URLConverterServiceTest {
         softly.assertThat(result).isEqualTo(expectedLongUrl)
     }
 
-    @Test(expected = NotFoundException::class)
+    @Test
     fun shouldThrowExceptionWhenShortCodeDoesntExist() {
 
         // Arrange
@@ -164,8 +165,10 @@ class URLConverterServiceTest {
 
         whenever(repository.findByShortCode(shortCode)).thenReturn(null)
 
-        // Act
-        service.getLongURLFromID(shortCode)
+        assertThrows<NotFoundException> {
+            // Act
+            service.getLongURLFromID(shortCode)
+        }
     }
 
 }

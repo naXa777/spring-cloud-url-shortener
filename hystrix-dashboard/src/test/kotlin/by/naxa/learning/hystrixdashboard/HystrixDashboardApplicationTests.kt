@@ -1,11 +1,10 @@
 package by.naxa.learning.hystrixdashboard
 
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.junit4.SpringRunner
 
-@RunWith(SpringRunner::class)
+@Disabled("TODO replace hystrix-turbine with resilience4j")
 @SpringBootTest
 class HystrixDashboardApplicationTests {
 

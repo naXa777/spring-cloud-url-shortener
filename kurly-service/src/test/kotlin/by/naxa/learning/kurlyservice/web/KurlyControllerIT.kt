@@ -2,12 +2,12 @@ package by.naxa.learning.kurlyservice.web
 
 import by.naxa.learning.kurlyservice.SpringBootMvcTest
 import by.naxa.learning.kurlyservice.web.dto.ShortenRequest
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
-import javax.transaction.Transactional
+import jakarta.transaction.Transactional
 
 /**
  * Test [KurlyController] and the underlying services
@@ -26,7 +26,7 @@ class KurlyControllerIT : SpringBootMvcTest() {
 
         performPostRequest(body)
                 .andExpect(status().isCreated)
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
     }
 
     @Test
