@@ -60,8 +60,8 @@ The `@EnableDiscoveryClient` annotation is used to turn `KurlyServiceApplication
 
 ### Kurly App
 
-| Module      | URL                                |
-| :---------: | :--------------------------------: |
+| Module      |         URL         |
+| :---------: |:-------------------:|
 | kurly-app   | `http://host:port/` |
 
 The `@EnableDiscoveryClient` annotation is used to turn `KurlyAppApplication` into a client of the Discovery Server.
@@ -86,11 +86,15 @@ How to embrace failure?
 
 #### Hystrix
 
+:wastebasket: Deprecated
+
 [Netflix Hystrix](https://github.com/Netflix/Hystrix) is a latency and **fault tolerance** library designed to isolate points of access to remote systems, services and 3rd party libraries, **stop cascading failure** and enable resilience in complex distributed systems where failure is inevitable.
 
 See [How it works](https://github.com/Netflix/Hystrix/wiki/How-it-Works).
 
 #### Hystrix Dashboard
+
+:wastebasket: Deprecated
 
 | Module             | URL                        |
 | :----------------: | :------------------------: |
@@ -99,6 +103,8 @@ See [How it works](https://github.com/Netflix/Hystrix/wiki/How-it-Works).
 Documentation: [Circuit Breaker: Hystrix Dashboard](https://cloud.spring.io/spring-cloud-static/Edgware.SR4/multi/multi__circuit_breaker_hystrix_dashboard.html)
 
 #### Turbine
+
+:wastebasket: Deprecated
 
 | Module   | URL                               |
 | :------: | :-------------------------------: |

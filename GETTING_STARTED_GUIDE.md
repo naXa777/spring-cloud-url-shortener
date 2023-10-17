@@ -25,7 +25,7 @@ This section describes various ways of deploying the application in development 
 Before the first build you need to take additional steps.
 
  1. Clone the [repository](https://github.com/naXa777/spring-cloud-url-shortener)
- 2. Install JDK 8+
+ 2. Install JDK 19+
  3. Install Docker + Docker Compose
 
 ### Build Using Gradle Wrapper
@@ -175,7 +175,7 @@ so the corresponding column type in DB is `MEDIUMTEXT` in order to fit any URL.
 * Gradle
 * IntelliJ IDEA
 * Docker + Docker Compose
-* Spring Boot 2
+* Spring Boot 3
 * Spring Cloud
 * Spring Data
 * Hibernate
