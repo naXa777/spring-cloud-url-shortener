@@ -1,6 +1,7 @@
-FROM java:8-jre
+FROM openjdk:19-jdk-alpine
 MAINTAINER Pavel Homal <about.me/naxa>
 
+RUN apk --no-cache add curl
 ADD ./build/libs/discovery-server.jar /app/
 CMD ["java", "-Xmx64m", "-jar", "/app/discovery-server.jar"]
 

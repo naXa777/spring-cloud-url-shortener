@@ -47,7 +47,7 @@ subprojects {
 	apply plugin: 'io.spring.dependency-management'
 
 	bootJar {
-		launchScript()
+		archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
 	}
 
 	compileKotlin {
